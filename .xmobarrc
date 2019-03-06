@@ -1,0 +1,30 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 100
+       , commands = [ Run DynNetwork
+                      [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                      , "--Low"      , "1000"       -- units: B/s
+                      , "--High"     , "5000"       -- units: B/s
+                      , "--low"      , "darkgreen"
+                      , "--normal"   , "darkorange"
+                      , "--high"     , "darkred"
+                      ] 10
+                    , Run MultiCpu
+                      [ "--template" , "Cpu: <autototal>%"
+                      , "--Low"      , "50"         -- units: %
+                      , "--High"     , "85"         -- units: %
+                      , "--low"      , "darkgreen"
+                      , "--normal"   , "darkorange"
+                      , "--high"     , "darkred"
+                      ] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %b %_d %l:%M" "date" 10
+                    , Run Kbd [("de", "DE"), ("us", "US")]
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %dynnetwork% ! %multicpu% ! %memory% ! %swap% ! <fc=#ee9a00>%date%</fc> ! %kbd%"
+       }
