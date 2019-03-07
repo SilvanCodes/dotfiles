@@ -2,7 +2,6 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import System.IO
 import XMonad.Layout.NoBorders
@@ -41,6 +40,7 @@ main = do
 	xmproc <- spawnPipe "/usr/bin/xmobar /home/$USER/.xmobarrc"
 	xmonad $ def
 		{ modMask = mod4Mask     -- Rebind Mod to the Windows key
+		, terminal = "urxvt"
 		, logHook = dynamicLogWithPP xmobarPP
       { ppOutput = hPutStrLn xmproc
       , ppTitle = xmobarColor "green" "" . shorten 50

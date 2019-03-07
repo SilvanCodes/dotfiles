@@ -14,3 +14,6 @@ alias subl=subl3
 alias j=autojump
 # dotfile repo
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# aura install
+alias sauras='sudo aura -S'
+alias saurar='sudo aura -Rs'
