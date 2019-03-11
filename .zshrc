@@ -17,12 +17,16 @@ bindkey -v
 alias ls='ls --color=auto'
 PS1='[%n%#%m %~] '
 source /usr/share/nvm/init-nvm.sh
+
 # sublime text 3
 alias subl=subl3
-# autojump
-alias j=autojump
+
 # dotfile repo
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # aura install
 alias sauras='sudo aura -S'
 alias saurar='sudo aura -Rs'
+
+# shutdown
+alias shut='sudo shutdown -h now'
