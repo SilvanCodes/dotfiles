@@ -6,6 +6,7 @@ import XMonad.Util.Run(spawnPipe)
 import System.IO
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Gaps
+import XMonad.Layout.TwoPane
 import Control.Arrow ((***), second)
 import qualified XMonad.StackSet as W
 import XMonad.Prompt.Shell
@@ -14,7 +15,7 @@ import XMonad.Prompt.AppLauncher as AL
 import XMonad.Util.EZConfig
 
 -- myLayouts = Tall 1 (3/100) (1/2) ||| (gaps [(U,250), (L,900), (D,250), (R,900)] $ Full)
-myLayouts = smartBorders $ gaps [(U,18)] $ rightMaster ||| Full ||| focus
+myLayouts = smartBorders $ gaps [(U,18)] $ rightMaster ||| rightTwoPane ||| Full ||| focus
     where
     -- default tiling algorithm partitions the screen into two panes
     rightMaster   = Flip $ Tall nmaster delta ratio
@@ -30,6 +31,9 @@ myLayouts = smartBorders $ gaps [(U,18)] $ rightMaster ||| Full ||| focus
 
     -- narrowed center view
     focus   = (gaps [(U,250), (L,900), (D,250), (R,900)] $ Full)
+
+    -- TwoPane flipped
+    rightTwoPane = Flip $ TwoPane delta ratio
 
 -- | Flip a layout, compute its 180 degree rotated form.
 newtype Flip l a = Flip (l a) deriving (Show, Read)

@@ -1,4 +1,8 @@
+# sweet screensaver
 xscreensaver &
+
+# remove cursor on inactivity
+unclutter &
 
 xrdb -merge .Xresources
 
